@@ -1,0 +1,50 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Платье 1",
+      "price": "23000",
+      "description": "фывыфвфыв",
+      "categoryIds": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Платьу 2",
+      "price": "12000",
+      "description": "фывфыв",
+      "categoryIds": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "name": "палтьо 1",
+      "price": "50000",
+      "description": "11",
+      "categoryIds": [
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "name": "патьоооо 2",
+      "price": "99999999",
+      "description": "1",
+      "categoryIds": [
+        2
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Платья"
+    },
+    {
+      "id": 2,
+      "name": "пальто"
+    }
+  ]
+}
