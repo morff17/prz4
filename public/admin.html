@@ -7,10 +7,9 @@
 
   <title>Admin page</title>
 </head>
-<body>
+<body style="font-family: 'Times New Roman'; background-color: #fbf3fd">
 <div class="flex flex-col m-auto" style="width: 80%;">
-  <h1 class="text-3xl mb-2">Админ панель</h1>
-
+  <h1 class="text-3xl mb-2 mt-3">Админка</h1>
   <div class="flex flex-col gap-2 mt-4">
     <input id = "messageArea" type="text" size="30" class="border block">
     <input type="submit" value="Отправить" onclick=sendMessage() class="border block"><br>
@@ -18,7 +17,7 @@
   </div>
 
   <div class="flex flex-col">
-    <h2 class="mt-3 text-xl">Категории</h2>
+    <h2 class="mt-3 mb-3 text-3xl">Категории</h2>
     <div class="flex justify-between gap-3">
       <table class="border-collapse border border-slate-500 w-full h-auto" id="categoryTable">
         <thead>
@@ -32,24 +31,24 @@
       </table>
       <form class="flex flex-col w-full" id="categoryForm">
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="categoryId">
+          <label class="block text-gray-700 text-lg font-bold mb-2" for="categoryId">
             ID изменяемой категории
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="categoryId" type="number" placeholder="Введите ID категории если хотите изменить её">
         </div>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="categoryName">
+          <label class="block text-gray-700 text-lg font-bold mb-2" for="categoryName">
             Название категории
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="categoryName" type="text" placeholder="Название категории">
         </div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           Сохранить
         </button>
       </form>
     </div>
 
-    <h2 class="mt-3 text-xl">Продукты</h2>
+    <h2 class="mt-3 mb-3 text-3xl">Продукты</h2>
     <div class="flex justify-between gap-3">
       <table class="border-collapse border border-slate-500 w-full h-auto" id="productsTable">
         <thead>
@@ -66,36 +65,36 @@
       </table>
       <form class="flex flex-col w-full" id="productForm">
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="productId">
+          <label class="block text-gray-700 text-lg font-bold mb-2" for="productId">
             ID изменяемого продукта
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="productId" type="number" placeholder="Введите ID продукта если хотите изменить его">
         </div>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="productName">
+          <label class="block text-gray-700 text-lg font-bold mb-2" for="productName">
             Название продукта
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="productName" type="text" placeholder="Название продукта">
         </div>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="productPrice">
+          <label class="block text-gray-700 text-lg font-bold mb-2" for="productPrice">
             Цена продукта
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="productPrice" type="number" placeholder="Цена продукта">
         </div>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="productDescription">
+          <label class="block text-gray-700 text-lg font-bold mb-2" for="productDescription">
             Описание продукта
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="productDescription" type="text" placeholder="Описание продукта">
         </div>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="productCategoryIds">
+          <label class="block text-gray-700 text-lg font-bold mb-2" for="productCategoryIds">
             ID категорий продукта
           </label>
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="productCategoryIds" type="text" placeholder="ID категорий продукта через запятую (к примеру 42,13)">
         </div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-3" type="submit">
           Сохранить
         </button>
       </form>
@@ -133,13 +132,13 @@
       let productsRowsHTML = '';
       for (const product of products) {
         productsRowsHTML += '<tr>'
-        productsRowsHTML += `<td class="border border-slate-600">${product.id}</td>`;
-        productsRowsHTML += `<td class="border border-slate-600">${product.name}</td>`;
-        productsRowsHTML += `<td class="border border-slate-600">${product.price}</td>`;
-        productsRowsHTML += `<td class="border border-slate-600">${product.description}</td>`;
-        productsRowsHTML += `<td class="border border-slate-600">${product.categoryIds}</td>`;
-        productsRowsHTML += `<td class="border border-slate-600">
-                    <button class="del-product-btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="productDeleteClick(${product.id})">Удалить</button>
+        productsRowsHTML += `<td class="border border-slate-600" style="text-align: center">${product.id}</td>`;
+        productsRowsHTML += `<td class="border border-slate-600" style="text-align: center">${product.name}</td>`;
+        productsRowsHTML += `<td class="border border-slate-600" style="text-align: center">${product.price}</td>`;
+        productsRowsHTML += `<td class="border border-slate-600" style="text-align: center">${product.description}</td>`;
+        productsRowsHTML += `<td class="border border-slate-600" style="text-align: center">${product.categoryIds}</td>`;
+        productsRowsHTML += `<td class="border border-slate-600" style="text-align: center">
+                    <button style="margin-inline: 5%;" class="del-product-btn bg-gray-500 hover:bg-grey-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="productDeleteClick(${product.id})">Удалить</button>
                   </td>`;
         productsRowsHTML += '</tr>';
       }
@@ -154,10 +153,10 @@
       let categoriesRowsHTML = '';
       for (const category of categories) {
         categoriesRowsHTML += '<tr>'
-        categoriesRowsHTML += `<td class="border border-slate-600">${category.id}</td>`;
-        categoriesRowsHTML += `<td class="border border-slate-600">${category.name}</td>`;
-        categoriesRowsHTML += `<td class="border border-slate-600">
-                    <button class="del-product-btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="categoryDeleteClick(${category.id})">Удалить</button>
+        categoriesRowsHTML += `<td class="border border-slate-600" style="text-align: center">${category.id}</td>`;
+        categoriesRowsHTML += `<td class="border border-slate-600" style="text-align: center">${category.name}</td>`;
+        categoriesRowsHTML += `<td class="border border-slate-600" style="text-align: center">
+                    <button style="margin-inline: 5%;" class="del-product-btn bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="categoryDeleteClick(${category.id})">Удалить</button>
                   </td>`;
         categoriesRowsHTML += '</tr>';
       }

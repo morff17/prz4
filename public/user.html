@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
     <title>User page</title>
 </head>
-<body>
+<body style="font-family: 'Times New Roman'; font-size: 20px; background-color: #fbefff">
 <div class="flex flex-col m-auto" style="width: 80%;">
-    <h1 class="text-3xl mb-2">Пользовательская панель</h1>
+    <h1 class="text-5xl mb-2 mt-3" style="color: #9946b5">Каталог товаров</h1>
     <h4>Фильтрация:</h4>
     <div class="flex flex-col g-2">
         <div>
@@ -27,6 +27,7 @@
     </div>
 
     <div id="result"></div>
+
     <div class="flex flex-col gap-2 mt-4">
         <input id="messageArea" type="text" size="30" class="border block">
         <input type="submit" value="Отправить" onclick=sendMessage() class="border block"><br>
