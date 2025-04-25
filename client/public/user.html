@@ -2,11 +2,12 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
     <title>User page</title>
 </head>
+
 <body style="font-family: 'Times New Roman'; font-size: 20px; background-color: #fbefff">
 <div class="flex flex-col m-auto" style="width: 80%;">
     <h1 class="text-5xl mb-2 mt-3" style="color: #9946b5">Каталог товаров</h1>
@@ -51,7 +52,7 @@
           }
         }`;
         $.ajax({
-            url: '/graphql',
+            url: 'http://localhost:3000/graphql',
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',

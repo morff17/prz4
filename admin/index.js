@@ -1,14 +1,16 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
 app.use(express.static('public'))
+app.use(cors({origin: '*'}));
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/admin.html')
 })
 
-const PORT = 3005;
+const PORT = 3000;
 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -181,6 +183,83 @@ app.delete('/categories/:id', (req, res) => {
     });
     res.status(204).send();
 });
+
+// GraphQL
+const { graphqlHTTP } = require('express-graphql');
+const { buildSchema } = require('graphql');
+
+const schema = buildSchema(`
+    type Product {
+        id: ID!
+        name: String!
+        price: Int!
+        description: String!
+        categoryIds: [Int]
+    }
+    type Category {
+        id: ID!
+        name: String!
+        products: [Product]
+    }
+    
+    type Query {
+        categories: [Category]
+    }
+`);
+
+class Product {
+    constructor({ id, name, price, description }) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
+}
+
+class Category {
+    constructor({ id, name, products }) {
+        this.id = id;
+        this.name = name;
+        this.products = products;
+    }
+}
+
+let root = {
+    categories: () => {
+        let data;
+        try {
+            data = fs.readFileSync('./data.json', 'utf-8');
+        } catch (err) {
+            console.error(err);
+        }
+
+        let jsonData = JSON.parse(data);
+        let result = [];
+        for (const category of jsonData.categories) {
+            let categoryJson = new Category(category);
+            categoryJson.products = [];
+            for (const product of jsonData.products) {
+                for (const categoryId of product.categoryIds) {
+                    if (categoryId === category.id) {
+                        categoryJson.products.push(new Product(product));
+                        break;
+                    }
+                }
+            }
+            result.push(categoryJson);
+        }
+        return result;
+    },
+}
+
+app.use(
+    '/graphql',
+    graphqlHTTP({
+        schema: schema,
+        rootValue: root,
+        graphiql: true,
+    }),
+);
 
 // Запуск сервера
 app.listen(PORT, () => {
